@@ -1,0 +1,38 @@
+.profile-bar{
+    align-items: center;
+}
+.profile-bar .detail p{
+    text-align: right;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+}
+.table-bordered{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: justify;
+}
+.table-bordered th{
+    text-align: center;
+}
+
+.notification p{
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+   
+}
+.notification .bubble {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    background: #5258E1;
+    padding: 13px 16px;
+    border-radius: 0px 0px 0px 20px;
+}
+.notification .bullets{
+    display: inline-flex;
+    margin-right: 10px;
+}

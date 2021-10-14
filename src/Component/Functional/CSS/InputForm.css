@@ -1,0 +1,15 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+.input-form{
+    margin-top: 5%;
+}
+.input-form .submit-btn{
+    padding: 5px 20px ;
+    background-color: #5258E1;
+}
+.input-form .deskrpsi-col{
+    text-align: start;
+    padding-bottom: 200px;
+}
