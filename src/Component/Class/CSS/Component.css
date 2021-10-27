@@ -2,10 +2,13 @@
     align-items: center;
 }
 .profile-bar .detail p{
-    text-align: right;
     font-size: 14px;
     line-height: 16px;
     margin: 0;
+}
+.profile .logout{
+    outline: none;
+    border: none;
 }
 .table-bordered{
     font-style: normal;
@@ -16,6 +19,9 @@
 }
 .table-bordered th{
     text-align: center;
+}
+.table-bordered button{
+    margin-right: 4px;
 }
 
 .notification p{
@@ -29,7 +35,7 @@
     flex-direction: row;
     color: white;
     background: #5258E1;
-    padding: 13px 16px;
+    padding: 10px;
     border-radius: 0px 0px 0px 20px;
 }
 .notification .bullets{

@@ -9,7 +9,22 @@
     padding: 5px 20px ;
     background-color: #5258E1;
 }
+.input-form .back-button{
+    text-decoration: none;
+    outline: none;
+    
+    padding: 7.5px 20px ;
+    border-radius: 5px;
+    color: white;
+    background-color: gray;
+}
 .input-form .deskrpsi-col{
     text-align: start;
     padding-bottom: 200px;
+}
+.input-form .dropdown{
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
 }

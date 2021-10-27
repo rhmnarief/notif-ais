@@ -18,7 +18,7 @@ const Notification = (props) => {
                         </p>
                     </div>
                     <div className="description">
-                        <p className="mb-2">{props.deskripsi}</p>
+                        <p className="mb-1">{props.deskripsi}</p>
                         <p className=" mb-1">
                             Due Date :
                             {' ' + props.deadline}

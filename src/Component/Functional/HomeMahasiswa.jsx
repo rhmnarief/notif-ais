@@ -8,6 +8,7 @@ import axios from "axios";
 const api = "http://localhost:3001"
 
 class HomeMahasiswa extends Component {
+
     constructor(props) {
         super(props)
 
@@ -34,15 +35,20 @@ class HomeMahasiswa extends Component {
                     <h3>Notification Task</h3>
                     <br />
                     <Row>
-                        <Col md="5">
-                            <Notification
-                                matakuliah="Algoritma Struktur Data"
-                                deskripsi="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et"
-                                deadline="23-10-2021"
-                            />
+                        <Col sm="4" >
+                            {
+                                this.state.notif.map(notification =>
+                                    <Notification
+                                        key={notification.id}
+                                        matakuliah={notification.nama}
+                                        deskripsi={notification.deskripsi}
+                                        deadline={notification.deadline.split('T')[0]}
+                                    />
 
-
+                                )
+                            }
                         </Col>
+
                     </Row>
 
                 </Container>

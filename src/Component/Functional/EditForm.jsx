@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Alert, Button, Container, Row, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import qs from 'querystring';
-import './CSS/InputForm.css'
+import { NavLink } from 'react-router-dom';
+import './CSS/InputForm.css';
 
 const api = "http://localhost:3001"
 
@@ -23,43 +24,42 @@ class EditForm extends Component {
 
         }
     }
-    // const opsi ={
-    //     for (let tables in table){
 
-    //     }
-    // }
     componentDidMount() {
-        axios.get(api + '/formtugas').then(res => {
+        axios.get(api + '/matakuliah').then(res => {
+            console.log(res.data.values)
             this.setState({
                 table: res.data.values
             })
         })
     }
     handleChange = (e) => {
+        console.log("Memanggil Handle dengan Values " + e.target.value)
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
-    editForm = (id) => {
+    editForm = (id_form) => {
+        console.log("edit form berjalan")
         const data = qs.stringify({
-            id: id,
+            id: id_form,
             judul: this.state.judul,
-            nama: this.props.location.state.nama,
+            id_matakuliah: this.state.id_matakuliah,
             deskripsi: this.state.deskripsi,
             deadline: this.state.deadline
 
         })
-        axios.post(api + '/updateForm', data)
+        axios.put(api + '/updateForm', data)
             .then(json => {
+                console.log("merubah data ke json ")
                 if (json === 200) {
-                    console.log("test")
                     this.setState({
                         response: json.data.values,
                         display: 'block'
                     })
                 } else {
-                    console.log('gagal');
+                    console.log(json.data.values)
                     this.setState({
                         response: json.data.values,
                         display: 'block'
@@ -76,9 +76,12 @@ class EditForm extends Component {
                         <Alert color="success" style={{ display: this.state.display }}>
                             {this.state.response}
                         </Alert>
-                        <Alert color="success" style={{ display: this.state.display }}>
-                            {this.state.response}
-                        </Alert>
+                        <NavLink className="back-button" to="/user-dosen">
+                            Back
+                        </NavLink>
+
+
+
                         <Row>
                             <Form>
                                 <FormGroup className="mt-2">
@@ -91,23 +94,31 @@ class EditForm extends Component {
                                 </FormGroup>
                                 <FormGroup className="mt-2">
                                     <Label>Mata Kuliah</Label>
-                                    <Input type="text" name="matakuliah" placeholder={this.state.nama} onChange={this.handleChange} value={this.state.id_matakuliah} >
-                                    </Input>
+                                    <br />
+                                    <select className="dropdown" value={this.state.id_matakuliah}
+                                        name="id_matakuliah"
+                                        onChange={this.handleChange}>
+                                        {this.state.table.map((table) => <option key={table.id} name="id_matakuliah" value={table.id}>{table.nama}</option>)}
+                                    </select>
                                 </FormGroup>
                                 <FormGroup className="mt-2">
                                     <Label>Deadline</Label>
                                     <Input
-                                        type="datetime"
-                                        name="date"
+                                        type="date"
+                                        name="deadline"
                                         id="exampleDate"
-                                        placeholder="date placeholder"
                                         value={this.state.deadline}
                                         onChange={this.handleChange}
-                                    />
+                                    >
+                                        {this.state.deadline}
+                                    </Input>
                                     <br />
 
                                 </FormGroup>
-                                <Button onClick={() => this.editForm(this.state.id)} className="submit-btn mt-5">Update</Button>
+                                <div className="class mt-3 d-flex align-items-center">
+                                    <Button onClick={() => this.editForm(this.state.id)} className="submit-btn">Update</Button>
+                                </div>
+
                             </Form>
 
                         </Row>

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useContext, Fragment } from 'react';
 import {
     Container,
     Button,
@@ -6,14 +6,26 @@ import {
     Table
 
 } from 'reactstrap';
+import qs from 'querystring';
+import axios from 'axios';
 import { Icon } from '@iconify/react';
 import './CSS/Home.css';
 import TableTugas from '../Class/TableTugas';
 import { Link } from 'react-router-dom';
 import Profile from '../Class/Profile';
+import { AuthContext } from '../../App';
+import { Redirect } from 'react-router-dom';
+
+
+const api = "http://localhost:3001"
 
 
 function Home() {
+    const { state, dispatch } = useContext(AuthContext)
+    if (!state.isAuthenticated) {
+        return <Redirect to="/" />
+    }
+
     return (
         <Fragment>
             <Profile
@@ -29,18 +41,12 @@ function Home() {
                     </h2>
                     <Link to="/input">
                         <button className="add-btn">
-                            <Icon icon="bi:plus-lg" color="#fff" />
-                            <span> </span>
+                            <Icon className="" icon="bi:plus-lg" color="white" />
                             Tambah
                         </button>
                     </Link>
 
-                    <div className="table">
-                        <TableTugas />
-
-                    </div>
-
-
+                    <TableTugas />
                 </Container>
 
 
@@ -50,6 +56,8 @@ function Home() {
         </Fragment>
 
     )
+
+
 }
 
 export default Home;

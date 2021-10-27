@@ -16,13 +16,13 @@ module.exports = function (app) {
         .get(jsonku.formtugas);
 
     app.route('/tambahForm')
-        .put(jsonku.tambahForm);
+        .post(jsonku.tambahForm);
 
     app.route('/updateForm')
-        .post(jsonku.ubahDataForm);
+        .put(jsonku.ubahDataForm);
 
-    // app.route('/ubah')
-    //     .put(jsonku.ubahMahasiswa);
+    app.route('/deleteForm')
+        .delete(jsonku.hapusForm);
 
     // app.route('/hapus')
     //     .delete(jsonku.hapusMahasiswa);

@@ -34,7 +34,7 @@ exports.tampilIdMatakuliah = function (req, res) {
 
 //menampilkan form tugas
 exports.formtugas = function (req, res) {
-    connection.query('SELECT form.id, form.judul, form.deskripsi, form.deadline ,mata_kuliah.nama, mata_kuliah.sks, mata_kuliah.kelas FROM form JOIN mata_kuliah WHERE form.id_matakuliah = mata_kuliah.id ORDER BY form.id',
+    connection.query('SELECT form.id, form.judul, form.deskripsi, form.deadline , mata_kuliah.nama, mata_kuliah.sks, mata_kuliah.kelas FROM form JOIN mata_kuliah WHERE form.id_matakuliah = mata_kuliah.id ORDER BY form.id DESC',
         function (error, rows) {
             if (error) {
                 console.log(error);
@@ -80,20 +80,21 @@ exports.ubahDataForm = function (req, res) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Berhasil Ubah Data", res)
+                response.ok("Berhasil Update Data", res)
             }
         });
 }
 
-// //Menghapus data berdasarkan id
-// exports.hapusMahasiswa = function (req, res) {
-//     var id = req.body.id_mahasiswa;
-//     connection.query('DELETE FROM mahasiswa WHERE id_mahasiswa=?', [id],
-//         function (error, rows, fields) {
-//             if (error) {
-//                 console.log(error);
-//             } else {
-//                 response.ok("Berhasil Hapus Data", res)
-//             }
-//         });
-// }
+//Menghapus data berdasarkan id
+exports.hapusForm = function (req, res) {
+    var id = req.body.id;
+    connection.query('DELETE FROM form WHERE id=?', [id],
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Hapus Data", res)
+            }
+        });
+}
+
