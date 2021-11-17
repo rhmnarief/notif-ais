@@ -1,5 +1,12 @@
 # Getting Started with Create React App
 
+This Project was build to create feature notification for Academic Information Systems to creat notifcation alert for information of tasks on subjects
+
+This Project was build in :
+Frontend Development using React JS
+Backend Development using Node JS and Express JS
+Database using MySql
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
